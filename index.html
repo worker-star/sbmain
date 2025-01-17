@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Design</title>
+    <link rel="stylesheet" href="css/f.css">
+    <style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    padding-top: 80px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.slideshow-container {
+    position: fixed;
+    width: 100%;
+    max-width: 1200px;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background: #fff;
+    z-index: 999;
+}
+
+.slide {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade {
+    animation: fade 1.5s ease-in-out;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 15px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.4s ease;
+    border-radius: 50%;
+    background-color: transparent;
+    user-select: none;
+    transform: translateY(-50%);
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.prev:hover, .next:hover {
+    background-color: transparent;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 220px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(34, 30, 30, 0.15);
+}
+
+.card-img-container {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 10px;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-title {
+    margin: 0 0 10px;
+    font-size: 2.8em; /* Increased font size */
+    color: #0e0000;
+    font-weight: bold; /* Bold text */
+    margin-top: 10px;
+}
+
+.card-btn {
+    background-color: #00B5EF;
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Adjusted padding for smaller width */
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    align-self: center;
+    margin-top: auto;
+    width: 60%; /* Smaller button width */
+}
+
+.card-btn:hover {
+    background-color: #005291;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 103, 172, 0.3);
+}
+
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #0067ac;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 15px;
+        margin-top: 180px;
+    }
+
+    .card {
+        height: 300px;
+    }
+
+    .card-img-container {
+        height: 100%;
+    }
+
+    .card-title {
+        font-size: 2.3em; /* Adjusted font size for smaller screens */
+    }
+
+    .card-btn {
+        padding: 8px 14px; /* Adjusted padding for smaller width */
+        font-size: 13px;
+        width: 70%; /* Adjusted button width */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr;
+        margin-top: 160px;
+    }
+
+    .card {
+        height: 280px;
+    }
+
+    .card-img-container {
+        height: 100%;
+    }
+
+    .card-title {
+        font-size: 1.1em; /* Further adjusted font size */
+    }
+
+    .card-btn {
+        padding: 8px 12px; /* Further adjusted padding */
+        font-size: 12px;
+        width: 80%; /* Further adjusted button width */
+    }
+}
+
+.card-apply-new-card {
+    grid-column: 1 / -1;
+    max-width: none;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+    .card-apply-new-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        height: 160px;
+    }
+
+    .card-apply-new-card .card-img-container {
+        height: 80%;
+    }
+
+    .card-apply-new-card .card-content {
+        padding: 20px;
+    }
+
+    .card-apply-new-card .card-title {
+        font-size: 2em; /* Further increased font size */
+    }
+
+    .card-apply-new-card .card-btn {
+        width: auto;
+        padding: 12px 24px; /* Adjusted padding for larger button */
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="src/logo.png" alt="Logo">
+    </header>
+
+    <div class="slideshow-container">
+        <div class="slide active">
+            <img src="src/image1.jpg" alt="Image 1" style="width:100%">
+        </div>
+        <div class="slide">
+            <img src="src/image2.jpeg" alt="Image 2" style="width:100%">
+        </div>
+        <div class="slide">
+            <img src="src/image3.jpeg" alt="Image 3" style="width:100%">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="card-container">
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="card-img">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Apply New Card</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="card-img">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Rewards Point</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="data.html">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Annual Charges</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="data.html">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Limit Increase</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="data.html">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Seprate Merged Cards</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="data.html">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Card Activations</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+
+        <div class="card card-apply-new-card">
+            <div class="card-img-container">
+                <img src="src/card.webp" alt="Card image" class="data.html">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Card Block</h2>
+                <button class="card-btn" onclick="animateButton(this, 'data.html')">Click Here</button>
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides() {
+            const slides = document.getElementsByClassName('slide');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 5000);
+        }
+
+        function animateButton(button, link) {
+            const loader = button.nextElementSibling;
+            button.disabled = true;
+            loader.style.display = 'block';
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+                button.disabled = false;
+                window.location.href = link;
+            }, 1);
+        }
+    </script>
+</body>
+</html>

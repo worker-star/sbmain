@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-width: 95%;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin: 10px;
+    margin-top: 100px;
+}
+
+.logo img {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.request-number {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 25px;
+    word-break: break-word;
+    margin-top: 10px;
+}
+
+.checkmark-circle {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkmark {
+    width: 100px;
+    height: 100px;
+}
+
+.checkmark-circle-background {
+    stroke: #4CAF50;
+    stroke-width: 2;
+    fill: none;
+    animation: draw-circle 0.5s ease-in-out forwards;
+}
+
+.checkmark-check {
+    stroke: #4CAF50;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: draw-check 1s ease-in-out forwards 0.5s;
+}
+
+@keyframes draw-circle {
+    100% {
+        stroke-dasharray: 160;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes draw-check {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .request-number {
+        font-size: 24px;
+    }
+
+    .checkmark {
+        width: 90px;
+        height: 90px;
+    }
+
+    .logo img {
+        width: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        height: 100%;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .request-number {
+        font-size: 22px;
+    }
+
+    .checkmark {
+        width: 80px;
+        height: 80px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    .request-number {
+        font-size: 20px;
+    }
+
+    .checkmark {
+        width: 70px;
+        height: 70px;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+}

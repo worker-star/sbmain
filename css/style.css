@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+}
+
+.navbar-logo img {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+label {
+    width: 100%; /* Make labels full-width */
+    margin-bottom: 1px; /* Add some space between labels and inputs */
+    font-weight: bold; /* Make labels bold */
+    margin-left: 5px;
+}
+
+input {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(33.33% - 10px); /* Adjust based on the number of inputs and gap */
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .input-container {
+        padding: 10px;
+    }
+
+    input {
+        width: calc(50% - 10px); /* Adjust based on the number of inputs and gap */
+    }
+}
+
+@media (max-width: 480px) {
+    input {
+        width: 100%;
+    }
+}
+
+.my-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: block; /* add this line to make the button a block element */
+    margin: 20px auto; /* add this line to center the button horizontally */
+}
+
+.my-button:hover {
+    background-color: #0056b3;
+}
